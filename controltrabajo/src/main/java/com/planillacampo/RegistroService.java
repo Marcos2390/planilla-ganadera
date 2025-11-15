@@ -1,6 +1,9 @@
 package com.planillacampo;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +42,22 @@ public class RegistroService {
 
         } catch (Exception e) {
             System.out.println("❌ Error al eliminar: " + e.getMessage());
+        }
+    }
+
+    public boolean existeCaravana(int numeroCaravana) {
+        String sql = "SELECT COUNT(*) FROM Animales WHERE numeroCaravana = ?";
+        try (Connection con = ConexionAlBase.conectar();
+                PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, numeroCaravana);
+            ResultSet rs = ps.executeQuery();
+
+            return rs.getInt(1) > 0; // Si es > 0, ya existe
+
+        } catch (Exception e) {
+            System.out.println("❌ Error al verificar caravana: " + e.getMessage());
+            return false; // en error devolvemos false para no bloquear la app
         }
     }
 
