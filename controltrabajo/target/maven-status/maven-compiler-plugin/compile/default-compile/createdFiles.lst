@@ -1,8 +1,0 @@
-com\planillacampo\DatabaseInit.class
-com\planillacampo\RegistroService.class
-com\planillacampo\Sanidad.class
-com\planillacampo\Movimientos.class
-com\planillacampo\CrearTablas.class
-com\planillacampo\Animales.class
-com\planillacampo\ConexionAlBase.class
-com\planillacampo\Main.class
